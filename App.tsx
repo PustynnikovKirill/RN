@@ -1,43 +1,40 @@
-import {StatusBar} from 'expo-status-bar';
-import {Animated, Pressable, StyleSheet, Switch, Text, View} from 'react-native';
-import ScrollView = Animated.ScrollView;
-import {useState} from "react";
+import {StyleSheet, View, Text} from 'react-native';
+import {Box} from "./src/Box/Box";
+import {VStack} from "./src/VStack/VStack";
+import {HStack} from "./src/Hstack/HStack";
+import {ZStack} from "./src/ZStack/ZStack";
+
 
 export default function App() {
-    const [isEnabled, setIsEnabled] = useState(false);
-    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
     return (
         <View style={styles.container}>
-            <View style={styles.container}/>
-            <Pressable onPress={()=>{}}>
-                <Text>I'm pressable!</Text>
-            </Pressable>
-            <ScrollView>
-                {[...Array(100)].map((_,index)=><Text key={`Text.${index}`} style={styles.text}>Inside</Text>)}
-            </ScrollView>
-            <Switch
-                trackColor={{false: '#767577', true: '#81b0ff'}}
-                thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-                ios_backgroundColor="#3e3e3e"
-                onValueChange={toggleSwitch}
-                value={isEnabled}
-            />
+            <VStack>
+                <Box width={100} bgr={'#ad3434'}>
+                    <Text>Children</Text>
+                </Box>
+                <HStack>
+                    <Box width={100} bgr={'#ad3434'}/>
+                    <Box width={100} bgr={'#ad3434'}/>
+                    <Box width={100} bgr={'#ad3434'}/>
+                    <Box width={100} bgr={'#ad3434'}/>
+                    <Box width={100} bgr={'#ad3434'}/>
+                    <Box width={100} bgr={'#ad3434'}/>
+                </HStack>
+                <ZStack reverse>
+                    <Box width={100} mt={10} ml={10} bgr={'#3a65c0'}/>
+                    <Box width={100} mt={20} ml={20} bgr={'#1ace22'}/>
+                    <Box width={100} mt={30} ml={30} bgr={'#1ace22'}/>
+                    <Box width={100} mt={40} ml={40} bgr={'#f1e60c'}/>
+                </ZStack>
+            </VStack>
         </View>
-
     );
 }
 
 const styles = StyleSheet.create({
     container: {
+        marginTop: 50,
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    text:{
-        fontSize:26,
-        fontWeight:'500'
+        backgroundColor: '#ffffff',
     }
-
-
 });
