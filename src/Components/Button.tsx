@@ -7,12 +7,12 @@ type ButtonType = {
 
 
 export const Button = ({name,callback}:ButtonType)=>{
-    const onClickHundler = () => {
+    const onClickHandler = () => {
         callback();
     }
 
 
     return (
-        <button onClick={onClickHundler}>{name}</button>
+        <button style={{width: "70px", height: "35px", backgroundColor: "lightblue"}} onClick={onClickHandler}>{name}</button>
     )
 }
